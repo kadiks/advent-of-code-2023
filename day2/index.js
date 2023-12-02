@@ -35,7 +35,6 @@ lines.forEach((line) => {
   });
 
   if (isValidGame) {
-    // total = total + gameID;
     total += gameID
   }
 });
