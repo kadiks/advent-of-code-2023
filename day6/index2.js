@@ -1,8 +1,10 @@
 import fs from "fs/promises";
 
+
 const input = await fs.readFile("./day6/input.txt", "utf-8");
 
 const lines = input.split("\n");
+console.time('algo')
 
 const timeDistances = [];
 
@@ -25,8 +27,6 @@ lines.forEach((line, index) => {
   });
 });
 
-console.log({ timeDistances });
-
 const recordNums = timeDistances.map(({ time, distance }) => {
   let recordBeaterNum = 0;
 
@@ -37,7 +37,6 @@ const recordNums = timeDistances.map(({ time, distance }) => {
   holdingTimes.forEach((holdingTime) => {
     const remainingTime = time - holdingTime;
     const currentDistance = remainingTime * holdingTime;
-    // console.log({ currentDistance, holdingTime });
     if (currentDistance > distance) {
       recordBeaterNum++;
     }
@@ -46,5 +45,7 @@ const recordNums = timeDistances.map(({ time, distance }) => {
 });
 
 const total = recordNums.reduce((acc, record) => acc * record, 1);
+
+console.timeEnd('algo')
 
 console.log({ total });
